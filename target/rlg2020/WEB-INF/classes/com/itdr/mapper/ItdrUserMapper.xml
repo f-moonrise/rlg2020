@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itdr.mapper.ItdrUserMapper" >
+  <resultMap id="BaseResultMap" type="com.itdr.pojo.ItdrUser" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="INTEGER" />
+    <result column="question" property="question" jdbcType="VARCHAR" />
+    <result column="answer" property="answer" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, password, money, question, answer, email, phone, type, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from itdr1_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <!--根据用户名和密码查询一个用户-->
+  <select id="selectByUserNameAndPassword" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List" />
+    from itdr1_user
+    where username = #{param1} and password = #{param2}
+  </select>
+  <!--根据用户名查询用户是否存在-->
+  <select id="selectByUserName" parameterType="String" resultMap="BaseResultMap">
+    select
+    #     count(id)
+    <include refid="Base_Column_List" />
+    from itdr1_user
+    where username = #{username}
+  </select>
+  <!--用户名或邮箱是否存在-->
+  <select id="selectByUserNameOrEmail" resultType="java.lang.Integer">
+    select
+    count(id)
+    from itdr1_user
+    where
+    <if test="type == 'username'">
+      username = #{str}
+    </if>
+    <if test="type == 'email'">
+      email = #{str}
+    </if>
+  </select>
+  <!--根据用户名，问题，答案查询用户-->
+  <select id="selectByUserNameAndQuestionAndAnswer" resultType="java.lang.Integer">
+    select
+      count(id)
+    from itdr1_user
+    where username = #{username} and question = #{question} and answer = #{answer}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from itdr1_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <!--用户注册-->
+  <insert id="insert" parameterType="com.itdr.pojo.ItdrUser" >
+    insert into itdr1_user (id, username, password,
+                            money, question, answer,
+                            create_time, update_time, email,
+                            phone)
+    values (null, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+            #{money,jdbcType=INTEGER}, #{question,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR},
+            now(), now(), #{email,jdbcType=VARCHAR},
+            #{phone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itdr.pojo.ItdrUser" >
+    insert into itdr1_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="question != null" >
+        question,
+      </if>
+      <if test="answer != null" >
+        answer,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=INTEGER},
+      </if>
+      <if test="question != null" >
+        #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null" >
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itdr.pojo.ItdrUser" >
+    update itdr1_user
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=INTEGER},
+      </if>
+      <if test="question != null and question != ''" >
+        question = #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null and answer != ''" >
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null and email != ''" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null and phone != ''" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+
+      update_time = now(),
+
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itdr.pojo.ItdrUser" >
+    update itdr1_user
+    set username = #{username,jdbcType=VARCHAR},
+        password = #{password,jdbcType=VARCHAR},
+        money = #{money,jdbcType=INTEGER},
+        question = #{question,jdbcType=VARCHAR},
+        answer = #{answer,jdbcType=VARCHAR},
+        email = #{email,jdbcType=VARCHAR},
+        phone = #{phone,jdbcType=VARCHAR},
+        type = #{type,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!--根据用户名修改密码-->
+  <update id="updateByUserNameAndPassWordNew">
+    update itdr1_user
+    set
+      password = #{passwordNew,jdbcType=VARCHAR},
+      update_time = now()
+    where username = #{username}
+  </update>
+  <!--根据用户名和旧密码修改密码-->
+  <update id="updateByUserNameAndPassWordOldAndPassWordNew">
+    update itdr1_user
+    set
+      password = #{passwordNew,jdbcType=VARCHAR},
+      update_time = now()
+    where username = #{username} and password = #{passwordOld}
+  </update>
+</mapper>
