@@ -70,14 +70,25 @@
 <!--               enableDeleteByExample="false"-->
 <!--               enableSelectByExample="false" enableUpdateByExample="false"></table>-->
 
-        <table schema="" tableName="itdr1_car" domainObjectName="ItdrCar" enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false" enableUpdateByExample="false"></table>
+<!--        <table schema="" tableName="itdr1_car" domainObjectName="ItdrCar" enableCountByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false" enableUpdateByExample="false"></table>-->
 
 <!--        <table schema="" tableName="itdr1_category" domainObjectName="ItdrCategory" enableCountByExample="false"-->
 <!--               enableDeleteByExample="false"-->
 <!--               enableSelectByExample="false" enableUpdateByExample="false"></table>-->
 
+<!--        <table schema="" tableName="itdr1_order" domainObjectName="ItdrOrder" enableCountByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false" enableUpdateByExample="false"></table>-->
+
+<!--        <table schema="" tableName="itdr1_orderitem" domainObjectName="ItdrOrderItem" enableCountByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false" enableUpdateByExample="false"></table>-->
+
+        <table schema="" tableName="itdr1_payinfo" domainObjectName="ItdrPayinfo" enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false"></table>
 
         <!-- 有些表的字段需要指定java类型
          <table schema="" tableName="user">

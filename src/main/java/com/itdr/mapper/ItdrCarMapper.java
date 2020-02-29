@@ -21,4 +21,10 @@ public interface ItdrCarMapper {
     List<ItdrCar> selectByUserID(Integer id);
 
     ItdrCar selectByUserIDAndProductId(@Param("userid") Integer userid, @Param("productid") Integer productid);
+
+    int deleteByUserIDAndProductId(@Param("userid") Integer userid, @Param("productid") Integer productid);
+
+    int deleteByUserIDAndChecked(Integer userid);
+
+    int updateByUserIdOrProductId(@Param("userid") Integer userid, @Param("productid") Integer productid,@Param("type") Integer type);
 }

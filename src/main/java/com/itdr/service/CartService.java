@@ -10,5 +10,17 @@ import com.itdr.pojo.ItdrUser;
 public interface CartService {
     ServerResponse list(ItdrUser user);
 
-    ServerResponse add(Integer productId, Integer count, ItdrUser user);
+    ServerResponse add(Integer productId, Integer count,Integer type, ItdrUser user);
+
+    ServerResponse update(Integer productId, Integer count,Integer type, ItdrUser user);
+
+    ServerResponse delete(Integer productId, ItdrUser user);
+
+    ServerResponse deleteaLL(ItdrUser user);
+
+    ServerResponse getCartProductCount(ItdrUser user);
+
+    ServerResponse checked(Integer productId,Integer type, ItdrUser user);
+
+    ServerResponse over(ItdrUser user);
 }

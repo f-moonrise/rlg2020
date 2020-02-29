@@ -44,7 +44,19 @@
     delete from itdr1_car
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <!--增加购物车信息-->
+
+<!--删除购物车中一条信息-->
+    <delete id="deleteByUserIDAndProductId">
+        delete from itdr1_car
+        where userid = #{userid,jdbcType=INTEGER} and productid=#{productid,jdbcType=INTEGER}
+    </delete>
+
+    <!--删除购物车中全部选中数据-->
+    <delete id="deleteByUserIDAndChecked">
+        delete from itdr1_car
+        where userid=#{userid,jdbcType=INTEGER} and checked=1
+    </delete>
+    <!--增加购物车信息-->
   <insert id="insert" parameterType="com.itdr.pojo.ItdrCar" >
     insert into itdr1_car (id, userid, productid, 
       pnum, pimages, sumprice, 
@@ -172,4 +184,19 @@
       updatetime = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+<!--更新商品选中状态-->
+    <update id="updateByUserIdOrProductId">
+        update itdr1_car
+        set
+            checked = #{type},
+            updatetime = now()
+        <where>
+            <if test="productid != null" >
+            productid = #{productid,jdbcType=INTEGER}
+            </if>
+            and userid =#{userid}
+        </where>
+
+
+    </update>
 </mapper>
