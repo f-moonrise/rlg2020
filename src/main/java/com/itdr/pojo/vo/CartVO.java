@@ -18,7 +18,7 @@ public class CartVO {
 
     private Boolean allChecked;
 
-    private BigDecimal cartTotalPrice;
+    private Integer cartTotalPrice;
 
     @Override
     public String toString() {

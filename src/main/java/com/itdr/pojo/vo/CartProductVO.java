@@ -28,7 +28,7 @@ public class CartProductVO {
 
     private Integer price;
 
-    private BigDecimal sumprice;
+    private Integer sumprice;
 
     private String pimages;
 

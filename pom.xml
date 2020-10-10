@@ -199,7 +199,7 @@
       </plugins>
     </pluginManagement>
 
-<!--    环境隔离配置-->
+    <!--环境隔离配置-->
     <resources>
       <resource>
         <directory>src/main/resources.${deploy.type}</directory>

@@ -7,10 +7,7 @@ import com.itdr.config.pay.BizContent;
 import com.itdr.config.pay.Configs;
 import com.itdr.config.pay.PGoodsDetail;
 import com.itdr.pojo.*;
-import com.itdr.pojo.vo.CartProductVO;
-import com.itdr.pojo.vo.CartVO;
-import com.itdr.pojo.vo.ProductVO;
-import com.itdr.pojo.vo.UserVO;
+import com.itdr.pojo.vo.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -66,7 +63,7 @@ public class ObjectToVOUtil {
     public static CartProductVO cartAndProductToVO(ItdrCar c, ItdrProduct p){
         CartProductVO cvo = new CartProductVO();
         //一条购物信息总价
-        BigDecimal tp ;
+        Integer tp ;
         if(c.getPnum()!=0 && p.getPrice()!=0){
             tp = BigDecimalUtil.mul(c.getPnum(),p.getPrice());
             cvo.setSumprice(tp);
@@ -96,7 +93,7 @@ public class ObjectToVOUtil {
         return cvo;
     }
 
-    public static CartVO toCartVO(List<CartProductVO> li,boolean bol,BigDecimal cartTotalPrice){
+    public static CartVO toCartVO(List<CartProductVO> li,boolean bol,Integer cartTotalPrice){
         CartVO cvo = new CartVO();
         //购物车中商品数据
         cvo.setCartProductVOList(li);
@@ -180,4 +177,42 @@ public class ObjectToVOUtil {
 
         return biz;
     }
+
+    /**
+     * 分装商品详情
+     * @param orderItem
+     * @return
+     */
+    public static OrderItemVO orderItemToOrderItemVo(ItdrOrderItem orderItem){
+        OrderItemVO orderItemVO = new OrderItemVO();
+        orderItemVO.setOrderNo(orderItem.getOrderNo());
+        orderItemVO.setProductId(orderItem.getProductid());
+        orderItemVO.setProductName(orderItem.getProductName());
+        orderItemVO.setProductImage(orderItem.getProductImage());
+        orderItemVO.setCurrentUnitPrice(orderItem.getCurrentunitprice());
+        orderItemVO.setQuantity(orderItem.getQuantity());
+        orderItemVO.setTotalPrice(orderItem.getTotalprice());
+        orderItemVO.setCreateTime(orderItem.getCreateTime());
+        return orderItemVO;
+    }
+
+    /**
+     * 分装地址详情
+     * @param shipping
+     * @return
+     */
+    public static ShoppingVO shippingToShippingVO(ItdrShopping shipping){
+        ShoppingVO shippingVO = new ShoppingVO();
+        shippingVO.setReceiverName(shipping.getReceiverName());
+        shippingVO.setReceiverPhone(shipping.getReceiverPhone());
+        shippingVO.setReceiverMobile(shipping.getReceiverMobile());
+        shippingVO.setReceiverCity(shipping.getReceiverCity());
+        shippingVO.setReceiverDistrict(shipping.getReceiverDistrict());
+        shippingVO.setReceiverProvince(shipping.getReceiverProvince());
+        shippingVO.setReceiverAddress(shipping.getReceiverAddress());
+        shippingVO.setReceiverZip(shipping.getReceiverZip());
+        return shippingVO;
+    }
+
+
 }

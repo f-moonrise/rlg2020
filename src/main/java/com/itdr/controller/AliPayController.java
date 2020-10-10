@@ -40,7 +40,7 @@ public class AliPayController {
      * @return
      */
     @RequestMapping("pay.do")
-    public ServerResponse pay(Long orderNo,HttpSession session){
+    public ServerResponse pay(Integer orderNo,HttpSession session){
         ItdrUser user = (ItdrUser) session.getAttribute("user");
         if(user == null){
             return ServerResponse.defeatedRS(ConstCode.DEFAULT_FAIL,
@@ -124,7 +124,7 @@ public class AliPayController {
      * @return
      */
     @RequestMapping("query_order_pay_status.do")
-    public ServerResponse queryOrderPayStatus(Long orderNo,HttpSession session){
+    public ServerResponse queryOrderPayStatus(Integer orderNo,HttpSession session){
         ItdrUser user = (ItdrUser) session.getAttribute("user");
         if(user == null){
             return ServerResponse.defeatedRS(ConstCode.DEFAULT_FAIL,

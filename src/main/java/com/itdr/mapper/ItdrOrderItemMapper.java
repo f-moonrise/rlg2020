@@ -18,5 +18,5 @@ public interface ItdrOrderItemMapper {
 
     int updateByPrimaryKey(ItdrOrderItem record);
 
-    List<ItdrOrderItem> selectByOrderNoAndUserId(@Param("orderNo") Long orderNo, @Param("userid") Integer userid);
+    List<ItdrOrderItem> selectByOrderNoAndUserId(@Param("orderNo") Integer orderNo, @Param("userid") Integer userid);
 }

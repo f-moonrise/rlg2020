@@ -86,7 +86,11 @@
 <!--               enableDeleteByExample="false"-->
 <!--               enableSelectByExample="false" enableUpdateByExample="false"></table>-->
 
-        <table schema="" tableName="itdr1_payinfo" domainObjectName="ItdrPayinfo" enableCountByExample="false"
+<!--        <table schema="" tableName="itdr1_payinfo" domainObjectName="ItdrPayinfo" enableCountByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false" enableUpdateByExample="false"></table>-->
+
+        <table schema="" tableName="itdr1_shopping" domainObjectName="ItdrShopping" enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false"></table>
 

@@ -27,4 +27,6 @@ public interface ItdrCarMapper {
     int deleteByUserIDAndChecked(Integer userid);
 
     int updateByUserIdOrProductId(@Param("userid") Integer userid, @Param("productid") Integer productid,@Param("type") Integer type);
+
+    int deleteByUserId(Integer userid);
 }

@@ -10,4 +10,7 @@ import com.itdr.pojo.ItdrUser;
 public interface ItdrOrderService {
     ServerResponse create(ItdrUser user, Integer shoppingId);
 
+    ServerResponse getOrderCartProduct(ItdrUser user, Integer orderNo);
+
+    ServerResponse getOrderList(Integer id, Integer pageNum, Integer pageSize);
 }

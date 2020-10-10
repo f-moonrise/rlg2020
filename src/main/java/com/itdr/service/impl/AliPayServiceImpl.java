@@ -45,7 +45,7 @@ public class AliPayServiceImpl implements AliPayService {
 
 
     @Override
-    public ServerResponse pay(ItdrUser user, Long orderNo) {
+    public ServerResponse pay(ItdrUser user, Integer orderNo) {
         //参数非空判断
         if(orderNo == null || orderNo < 0){
             return ServerResponse.defeatedRS(
@@ -103,12 +103,13 @@ public class AliPayServiceImpl implements AliPayService {
         }
     }
 
+
     @Override
     public ServerResponse alipayCallback(Map<String, String> map) {
         ServerResponse sr = null;
 
         //step1:获取ordrNo
-        Long orderNo = Long.parseLong(map.get("out_trade_no"));
+        Integer orderNo = Math.toIntExact(Long.parseLong(map.get("out_trade_no")));
         //step2:获取流水号
         String tarde_no = map.get("trade_no");
         //step3:获取支付状态
@@ -164,7 +165,7 @@ public class AliPayServiceImpl implements AliPayService {
     }
 
     @Override
-    public ServerResponse queryOrderPayStatus(ItdrUser user, Long orderNo) {
+    public ServerResponse queryOrderPayStatus(ItdrUser user, Integer orderNo) {
         //参数非空判断
         if(orderNo == null || orderNo < 0){
             return ServerResponse.defeatedRS(

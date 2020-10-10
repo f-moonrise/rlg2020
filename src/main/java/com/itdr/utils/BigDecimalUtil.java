@@ -14,10 +14,11 @@ public class BigDecimalUtil {
      * @param d2
      * @return
      */
-    public static BigDecimal add(Double d1, Double d2){
-        BigDecimal bigDecimal = new BigDecimal(Double.toString(d1));
-        BigDecimal bigDecimal1 = new BigDecimal(Double.toString(d2));
-        return bigDecimal.add(bigDecimal1);
+    public static Integer add(Integer d1, Integer d2){
+//        BigDecimal bigDecimal = new BigDecimal(Double.toString(d1));
+//        BigDecimal bigDecimal1 = new BigDecimal(Double.toString(d2));
+//        return bigDecimal.add(bigDecimal1);
+        return d1 + d2;
     }
 
     /**
@@ -38,10 +39,11 @@ public class BigDecimalUtil {
      * @param d2
      * @return
      */
-    public static BigDecimal mul(Integer d1,Integer d2){
-        BigDecimal bigDecimal = new BigDecimal(Integer.toString(d1));
-        BigDecimal bigDecimal1 = new BigDecimal(Integer.toString(d2));
-        return bigDecimal.multiply(bigDecimal1);
+    public static Integer mul(Integer d1, Integer d2){
+//        BigDecimal bigDecimal = new BigDecimal(Integer.toString(d1));
+//        BigDecimal bigDecimal1 = new BigDecimal(Integer.toString(d2));
+//        return bigDecimal.multiply(bigDecimal1);
+        return d1*d2;
     }
 
     /**

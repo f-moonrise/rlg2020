@@ -3,6 +3,8 @@ package com.itdr.mapper;
 import com.itdr.pojo.ItdrOrder;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface ItdrOrderMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -16,7 +18,9 @@ public interface ItdrOrderMapper {
 
     int updateByPrimaryKey(ItdrOrder record);
 
-    ItdrOrder selectByOrderNoAndUserId(@Param("orderNo") Long orderNo, @Param("userid") Integer userid);
+    ItdrOrder selectByOrderNoAndUserId(@Param("orderNo") Integer orderNo, @Param("userid") Integer userid);
 
-    ItdrOrder selectByOrderNo(Long orderNo);
+    ItdrOrder selectByOrderNo(Integer orderNo);
+
+    List<ItdrOrder> selectByUid(Integer userid);
 }

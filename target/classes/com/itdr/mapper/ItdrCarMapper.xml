@@ -56,7 +56,12 @@
         delete from itdr1_car
         where userid=#{userid,jdbcType=INTEGER} and checked=1
     </delete>
-    <!--增加购物车信息-->
+  <!--删除购物车中全部数据-->
+  <delete id="deleteByUserId">
+    delete from itdr1_car
+    where userid=#{userid,jdbcType=INTEGER}
+  </delete>
+  <!--增加购物车信息-->
   <insert id="insert" parameterType="com.itdr.pojo.ItdrCar" >
     insert into itdr1_car (id, userid, productid, 
       pnum, pimages, sumprice, 

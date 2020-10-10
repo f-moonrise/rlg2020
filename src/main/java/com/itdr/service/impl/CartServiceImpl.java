@@ -32,13 +32,13 @@ public class CartServiceImpl implements CartService {
     ItdrProductMapper productMapper;
 
     //获取CartVO对象
-    private CartVO getCartVO(List<ItdrCar> cartList){
+    protected CartVO getCartVO(List<ItdrCar> cartList){
         //获取购物车对应的商品信息]
         List<CartProductVO> cartProductVOList = new ArrayList<CartProductVO>();
 
 
         boolean bol = true;
-        BigDecimal cartTotalPrice = new BigDecimal("0");
+        Integer cartTotalPrice = 0;
         for(ItdrCar cart : cartList){
             ItdrProduct product = productMapper.selectByPrimaryKey(cart.getProductid());
 
@@ -51,7 +51,7 @@ public class CartServiceImpl implements CartService {
 
                 //计算购物车总价,只计算选中的商品
                 if(cartProductVO.getChecked() == 1 && cartProductVO.getLimitQuantity() == "LIMIT_NUM_SUCCESS"){
-                    cartTotalPrice = BigDecimalUtil.add(cartTotalPrice.doubleValue(),cartProductVO.getSumprice().doubleValue());
+                    cartTotalPrice = BigDecimalUtil.add(cartTotalPrice,cartProductVO.getSumprice());
                 }
             }
             //判断购物车是否全选
